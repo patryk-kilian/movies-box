@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import MoviesContext from './context/movies/moviesContext';
-import AlertContext from './context/alert/alertContext';
+import MoviesContext from '../context/movies/moviesContext';
+import AlertContext from '../context/alert/alertContext';
 
 const Search = () => {
   const alertContext = useContext(AlertContext);
