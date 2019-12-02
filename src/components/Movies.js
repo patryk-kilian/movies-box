@@ -29,9 +29,6 @@ const Movies = () => {
         <Favorites path='/favorites' />
         <Watchlist path='/watchlist' />
       </Router>
-      {movies.map(movie => (
-        <h2>{movie.title}</h2>
-      ))}
     </div>
   );
 };

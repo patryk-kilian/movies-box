@@ -1,6 +1,10 @@
-import React, { useContext, useState } from 'react';
+/** @jsx jsx */
+import { jsx } from '@emotion/core';
+
+import { useContext, useState } from 'react';
 import MoviesContext from '../context/movies/moviesContext';
 import AlertContext from '../context/alert/alertContext';
+import MovieCard from '../components/MovieCard';
 
 const Search = () => {
   const alertContext = useContext(AlertContext);
@@ -34,6 +38,17 @@ const Search = () => {
         />
         <input type='submit' value='search' />
       </form>
+      <div
+        css={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridGap: '10px',
+          padding: '10px',
+        }}
+      >
+        {movies &&
+          movies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
+      </div>
     </div>
   );
 };
