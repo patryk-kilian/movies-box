@@ -22,7 +22,7 @@ const AsideNav = () => {
             <Link to='/'>Search Movies</Link>
           </li>
           <li>
-            <Link to='/favorites'>Favorites</Link>
+            <Link to='/watched'>Watched</Link>
           </li>
           <li>
             <Link to='/watchlist'>Watchlist</Link>

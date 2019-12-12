@@ -5,10 +5,10 @@ import { useContext } from 'react';
 import MoviesContext from '../context/movies/moviesContext';
 import MovieCard from './MovieCard';
 
-const Watchlist = () => {
+const Watched = () => {
   const moviesContext = useContext(MoviesContext);
 
-  const { watchlist } = moviesContext;
+  const { watched } = moviesContext;
 
   return (
     <div>
@@ -20,11 +20,11 @@ const Watchlist = () => {
           padding: '10px',
         }}
       >
-        {watchlist &&
-          watchlist.map(movie => <MovieCard key={movie.id} movie={movie} />)}
+        {watched &&
+          watched.map(movie => <MovieCard key={movie.id} movie={movie} />)}
       </div>
     </div>
   );
 };
 
-export default Watchlist;
+export default Watched;

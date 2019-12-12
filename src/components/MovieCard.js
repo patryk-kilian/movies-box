@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
+import { Link } from '@reach/router';
 
 const MovieCard = props => {
-  const { title, poster_path } = props.movie;
+  const { title, poster_path, id } = props.movie;
 
   return (
     <div
@@ -22,6 +23,7 @@ const MovieCard = props => {
       ) : (
         <h2>no poster biatch</h2>
       )}
+      <Link to={`/movie/${id}`}>Details</Link>
     </div>
   );
 };

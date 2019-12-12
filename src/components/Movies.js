@@ -5,8 +5,9 @@ import { jsx } from '@emotion/core';
 import { useContext, useEffect } from 'react';
 import MoviesContext from '../context/movies/moviesContext';
 import Search from '../components/Search';
-import Favorites from '../components/Favorites';
+import Watched from '../components/Watched';
 import Watchlist from '../components/Watchlist';
+import Details from '../components/MovieDetails';
 import { Router } from '@reach/router';
 
 const Movies = () => {
@@ -26,8 +27,9 @@ const Movies = () => {
     >
       <Router>
         <Search path='/' />
-        <Favorites path='/favorites' />
+        <Watched path='/watched' />
         <Watchlist path='/watchlist' />
+        <Details path='/movie/:id' />
       </Router>
     </div>
   );
