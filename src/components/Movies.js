@@ -22,7 +22,9 @@ const Movies = () => {
   return (
     <div
       css={{
-        background: 'green',
+        background: '#f3f2f3',
+        marginLeft: '300px',
+        width: '900px',
       }}
     >
       <Router>

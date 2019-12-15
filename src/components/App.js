@@ -21,6 +21,7 @@ const App = () => {
             css={{
               display: 'grid',
               gridTemplateColumns: '1fr 3fr',
+              height: '100vh',
             }}
           >
             <AsideNav />
