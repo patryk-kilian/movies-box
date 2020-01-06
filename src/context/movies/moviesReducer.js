@@ -1,8 +1,10 @@
 import {
   SEARCH_MOVIES,
   GET_DETAILS,
+  TOGGLE_WATCHED,
   ADD_TO_WATCHED,
   ADD_TO_WATCHLIST,
+  ADD_MOVIE,
   REMOVE_FROM_WATCHLIST,
   REMOVE_FROM_WATCHED,
 } from '../types';
@@ -12,22 +14,22 @@ export default (state, action) => {
     case SEARCH_MOVIES:
       return {
         ...state,
-        movies: action.payload,
+        fetchedMovies: action.payload,
       };
     case GET_DETAILS:
       return {
         ...state,
         movie: action.payload,
       };
-    case ADD_TO_WATCHED:
+    case TOGGLE_WATCHED:
       return {
         ...state,
-        watched: action.payload,
+        myMovies: action.payload,
       };
-    case ADD_TO_WATCHLIST:
+    case ADD_MOVIE:
       return {
         ...state,
-        watchlist: action.payload,
+        myMovies: action.payload,
       };
     case REMOVE_FROM_WATCHLIST:
       return {

@@ -53,10 +53,10 @@ const AsideNav = () => {
             <NavLink to='/'>Search Movies</NavLink>
           </li>
           <li>
-            <NavLink to='/watched'>Watched</NavLink>
+            <NavLink to='/watchlist'>Watchlist</NavLink>
           </li>
           <li>
-            <NavLink to='/watchlist'>Watchlist</NavLink>
+            <NavLink to='/watched'>Watched</NavLink>
           </li>
         </ul>
       </nav>

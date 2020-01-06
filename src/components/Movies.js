@@ -12,7 +12,7 @@ import { Router } from '@reach/router';
 
 const Movies = () => {
   const moviesContext = useContext(MoviesContext);
-  const { searchMovies, movies } = moviesContext;
+  const { searchMovies } = moviesContext;
 
   useEffect(() => {
     searchMovies();
@@ -22,7 +22,6 @@ const Movies = () => {
   return (
     <div
       css={{
-        background: '#f3f2f3',
         marginLeft: '300px',
         width: '900px',
       }}

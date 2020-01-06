@@ -5,6 +5,8 @@ import MoviesReducer from './moviesReducer';
 import {
   SEARCH_MOVIES,
   GET_DETAILS,
+  ADD_MOVIE,
+  TOGGLE_WATCHED,
   ADD_TO_WATCHED,
   ADD_TO_WATCHLIST,
   REMOVE_FROM_WATCHLIST,
@@ -13,10 +15,9 @@ import {
 
 const MoviesState = props => {
   const initialState = {
-    movies: [],
+    fetchedMovies: [],
+    myMovies: [],
     movie: null,
-    watchlist: [],
-    watched: [],
   };
 
   const [state, dispatch] = useReducer(MoviesReducer, initialState);
@@ -46,57 +47,86 @@ const MoviesState = props => {
     });
   };
 
-  const removeFromWatchlist = movie => {
-    const filteredWatchlist = removeMovieFromArray(state.watchlist, movie);
+  const addMovie = movie => {
+    const filteredMovies = removeMovieFromArray(state.myMovies, movie);
 
     dispatch({
-      type: REMOVE_FROM_WATCHLIST,
-      payload: filteredWatchlist,
+      type: ADD_MOVIE,
+      payload: [...filteredMovies, { ...movie, watched: false }],
     });
   };
 
-  const removeFromWatched = movie => {
-    const filteredWatched = removeMovieFromArray(state.watched, movie);
-
+  const toggleWatched = myMovie => {
+    const newMovies = state.myMovies.map(movie => {
+      if (myMovie.id === movie.id) {
+        return {
+          ...movie,
+          watched: !movie.watched,
+        };
+      } else {
+        return movie;
+      }
+    });
     dispatch({
-      type: REMOVE_FROM_WATCHED,
-      payload: filteredWatched,
+      type: TOGGLE_WATCHED,
+      payload: newMovies,
     });
   };
 
-  const addToWatched = movie => {
-    const filteredWatched = removeMovieFromArray(state.watched, movie);
+  // const removeFromWatchlist = movie => {
+  //   const filteredWatchlist = removeMovieFromArray(state.watchlist, movie);
 
-    dispatch({
-      type: ADD_TO_WATCHED,
-      payload: [...filteredWatched, movie],
-    });
+  //   dispatch({
+  //     type: REMOVE_FROM_WATCHLIST,
+  //     payload: filteredWatchlist,
+  //   });
+  // };
 
-    removeFromWatchlist(movie);
-  };
+  // const removeFromWatched = movie => {
+  //   const filteredWatched = removeMovieFromArray(state.watched, movie);
 
-  const addToWatchlist = movie => {
-    const filteredWatchlist = removeMovieFromArray(state.watchlist, movie);
+  //   dispatch({
+  //     type: REMOVE_FROM_WATCHED,
+  //     payload: filteredWatched,
+  //   });
+  // };
 
-    dispatch({
-      type: ADD_TO_WATCHLIST,
-      payload: [...filteredWatchlist, movie],
-    });
+  // const addToWatched = movie => {
+  //   const filteredWatched = removeMovieFromArray(state.watched, movie);
 
-    removeFromWatched(movie);
-  };
+  //   dispatch({
+  //     type: ADD_TO_WATCHED,
+  //     payload: [...filteredWatched, { ...movie, onWatched: true }],
+  //   });
+
+  //   removeFromWatchlist(movie);
+  // };
+
+  // const addToWatchlist = movie => {
+  //   const filteredWatchlist = removeMovieFromArray(state.watchlist, movie);
+
+  //   dispatch({
+  //     type: ADD_TO_WATCHLIST,
+  //     payload: [...filteredWatchlist, { ...movie, onWatchlist: true }],
+  //   });
+
+  //   removeFromWatched(movie);
+  // };
 
   return (
     <MoviesContext.Provider
       value={{
-        movies: state.movies,
+        fetchedMovies: state.fetchedMovies,
         movie: state.movie,
-        watched: state.watched,
-        watchlist: state.watchlist,
+        myMovies: state.myMovies,
         searchMovies,
         getMovieDetails,
-        addToWatched,
-        addToWatchlist,
+        toggleWatched,
+        // addToWatched,
+        // addToWatchlist,
+        // removeFromWatchlist,
+        // removeFromWatched,
+        addMovie,
       }}
     >
       {props.children}

@@ -8,7 +8,9 @@ import MovieCard from './MovieCard';
 const Watched = () => {
   const moviesContext = useContext(MoviesContext);
 
-  const { watched } = moviesContext;
+  const { myMovies } = moviesContext;
+
+  const watched = myMovies.filter(movie => movie.watched);
 
   return (
     <div>

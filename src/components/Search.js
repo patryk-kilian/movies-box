@@ -10,7 +10,7 @@ const Search = () => {
   const alertContext = useContext(AlertContext);
   const moviesContext = useContext(MoviesContext);
 
-  const { searchMovies, movies } = moviesContext;
+  const { searchMovies, fetchedMovies } = moviesContext;
   const { setAlert } = alertContext;
 
   const [query, setQuery] = useState('');
@@ -38,16 +38,11 @@ const Search = () => {
         />
         <input type='submit' value='search' />
       </form>
-      <div
-        css={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3,1fr)',
-          gridGap: '10px',
-          padding: '10px',
-        }}
-      >
-        {movies &&
-          movies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
+      <div css={{}}>
+        {fetchedMovies &&
+          fetchedMovies.map(movie => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
       </div>
     </div>
   );
