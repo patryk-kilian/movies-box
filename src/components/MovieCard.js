@@ -1,31 +1,10 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import styled from '@emotion/styled';
 import { Link } from '@reach/router';
-import CardButton from '../components/CardButton';
-import { useContext } from 'react';
-import MoviesContext from '../context/movies/moviesContext';
+import StatusButtons from './StatusButtons';
 
 const MovieCard = props => {
-  const {
-    title,
-    poster_path,
-    id,
-    overview,
-    onWatchlist,
-    onWatched,
-  } = props.movie;
-
-  const moviesContext = useContext(MoviesContext);
-
-  const {
-    addMovie,
-    addToWatched,
-    addToWatchlist,
-    toggleWatched,
-    removeFromWatched,
-    removeFromWatchlist,
-  } = moviesContext;
+  const { title, poster_path, id, overview } = props.movie;
 
   return (
     <div
@@ -66,20 +45,7 @@ const MovieCard = props => {
           }}
         >
           <Link to={`/movie/${id}`}>Show Details</Link>
-          <CardButton
-            list='Watched'
-            remove={removeFromWatched}
-            add={addMovie}
-            active={onWatched}
-            movie={props.movie}
-          />
-          <CardButton
-            list='Watchlist'
-            remove={removeFromWatchlist}
-            add={toggleWatched}
-            active={onWatchlist}
-            movie={props.movie}
-          />
+          <StatusButtons movie={props.movie} />
         </div>
       </div>
     </div>

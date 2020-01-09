@@ -2,8 +2,6 @@
 
 import { jsx } from '@emotion/core';
 
-import { useContext, useEffect } from 'react';
-import MoviesContext from '../context/movies/moviesContext';
 import Search from '../components/Search';
 import Watched from '../components/Watched';
 import Watchlist from '../components/Watchlist';
@@ -11,14 +9,6 @@ import Details from '../components/MovieDetails';
 import { Router } from '@reach/router';
 
 const Movies = () => {
-  const moviesContext = useContext(MoviesContext);
-  const { searchMovies } = moviesContext;
-
-  useEffect(() => {
-    searchMovies();
-    //eslint-disable-next-line
-  }, []);
-
   return (
     <div
       css={{

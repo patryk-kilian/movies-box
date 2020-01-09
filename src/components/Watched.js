@@ -14,14 +14,7 @@ const Watched = () => {
 
   return (
     <div>
-      <div
-        css={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3,1fr)',
-          gridGap: '10px',
-          padding: '10px',
-        }}
-      >
+      <div css={{}}>
         {watched &&
           watched.map(movie => <MovieCard key={movie.id} movie={movie} />)}
       </div>

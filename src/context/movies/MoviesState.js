@@ -6,11 +6,8 @@ import {
   SEARCH_MOVIES,
   GET_DETAILS,
   ADD_MOVIE,
+  DELETE_MOVIE,
   TOGGLE_WATCHED,
-  ADD_TO_WATCHED,
-  ADD_TO_WATCHLIST,
-  REMOVE_FROM_WATCHLIST,
-  REMOVE_FROM_WATCHED,
 } from '../types';
 
 const MoviesState = props => {
@@ -26,6 +23,7 @@ const MoviesState = props => {
     const res = await axios.get(
       `http://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${query}&page=1`
     );
+
     dispatch({
       type: SEARCH_MOVIES,
       payload: res.data.results,
@@ -48,11 +46,18 @@ const MoviesState = props => {
   };
 
   const addMovie = movie => {
+    dispatch({
+      type: ADD_MOVIE,
+      payload: [...state.myMovies, { ...movie, watched: false }],
+    });
+  };
+
+  const deleteMovie = movie => {
     const filteredMovies = removeMovieFromArray(state.myMovies, movie);
 
     dispatch({
-      type: ADD_MOVIE,
-      payload: [...filteredMovies, { ...movie, watched: false }],
+      type: DELETE_MOVIE,
+      payload: [...filteredMovies],
     });
   };
 
@@ -73,46 +78,6 @@ const MoviesState = props => {
     });
   };
 
-  // const removeFromWatchlist = movie => {
-  //   const filteredWatchlist = removeMovieFromArray(state.watchlist, movie);
-
-  //   dispatch({
-  //     type: REMOVE_FROM_WATCHLIST,
-  //     payload: filteredWatchlist,
-  //   });
-  // };
-
-  // const removeFromWatched = movie => {
-  //   const filteredWatched = removeMovieFromArray(state.watched, movie);
-
-  //   dispatch({
-  //     type: REMOVE_FROM_WATCHED,
-  //     payload: filteredWatched,
-  //   });
-  // };
-
-  // const addToWatched = movie => {
-  //   const filteredWatched = removeMovieFromArray(state.watched, movie);
-
-  //   dispatch({
-  //     type: ADD_TO_WATCHED,
-  //     payload: [...filteredWatched, { ...movie, onWatched: true }],
-  //   });
-
-  //   removeFromWatchlist(movie);
-  // };
-
-  // const addToWatchlist = movie => {
-  //   const filteredWatchlist = removeMovieFromArray(state.watchlist, movie);
-
-  //   dispatch({
-  //     type: ADD_TO_WATCHLIST,
-  //     payload: [...filteredWatchlist, { ...movie, onWatchlist: true }],
-  //   });
-
-  //   removeFromWatched(movie);
-  // };
-
   return (
     <MoviesContext.Provider
       value={{
@@ -122,11 +87,8 @@ const MoviesState = props => {
         searchMovies,
         getMovieDetails,
         toggleWatched,
-        // addToWatched,
-        // addToWatchlist,
-        // removeFromWatchlist,
-        // removeFromWatched,
         addMovie,
+        deleteMovie,
       }}
     >
       {props.children}
