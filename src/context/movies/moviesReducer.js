@@ -4,6 +4,7 @@ import {
   TOGGLE_WATCHED,
   ADD_MOVIE,
   DELETE_MOVIE,
+  RATE_MOVIE,
 } from '../types';
 
 export default (state, action) => {
@@ -29,6 +30,11 @@ export default (state, action) => {
         myMovies: action.payload,
       };
     case DELETE_MOVIE:
+      return {
+        ...state,
+        myMovies: action.payload,
+      };
+    case RATE_MOVIE:
       return {
         ...state,
         myMovies: action.payload,

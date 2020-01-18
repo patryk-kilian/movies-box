@@ -8,6 +8,7 @@ import {
   ADD_MOVIE,
   DELETE_MOVIE,
   TOGGLE_WATCHED,
+  RATE_MOVIE,
 } from '../types';
 
 const MoviesState = props => {
@@ -20,14 +21,18 @@ const MoviesState = props => {
   const [state, dispatch] = useReducer(MoviesReducer, initialState);
 
   const searchMovies = async query => {
-    const res = await axios.get(
-      `http://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${query}&page=1`
-    );
+    try {
+      const res = await axios.get(
+        `http://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${query}&page=1`
+      );
 
-    dispatch({
-      type: SEARCH_MOVIES,
-      payload: res.data.results,
-    });
+      dispatch({
+        type: SEARCH_MOVIES,
+        payload: res.data.results,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const removeMovieFromArray = (array, movie) => {
@@ -48,7 +53,7 @@ const MoviesState = props => {
   const addMovie = movie => {
     dispatch({
       type: ADD_MOVIE,
-      payload: [...state.myMovies, { ...movie, watched: false }],
+      payload: [...state.myMovies, { ...movie, watched: false, rating: null }],
     });
   };
 
@@ -78,6 +83,24 @@ const MoviesState = props => {
     });
   };
 
+  const setRating = (rating, myMovie) => {
+    const newMovies = state.myMovies.map(movie => {
+      if (myMovie.id === movie.id) {
+        return {
+          ...movie,
+          rating: rating,
+        };
+      } else {
+        return movie;
+      }
+    });
+
+    dispatch({
+      type: RATE_MOVIE,
+      payload: newMovies,
+    });
+  };
+
   return (
     <MoviesContext.Provider
       value={{
@@ -89,6 +112,7 @@ const MoviesState = props => {
         toggleWatched,
         addMovie,
         deleteMovie,
+        setRating,
       }}
     >
       {props.children}

@@ -1,7 +1,9 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
+
 import { Link } from '@reach/router';
 import StatusButtons from './StatusButtons';
+import Rating from './Rating';
 
 const MovieCard = props => {
   const { title, poster_path, id, overview } = props.movie;
@@ -10,7 +12,7 @@ const MovieCard = props => {
     <div
       css={{
         border: '1px solid #cbb0d9',
-        marginBottom: '5px',
+        marginBottom: '10px',
         background: '#f3f2f3',
         marginLeft: '10px',
         marginRight: '10px',
@@ -46,6 +48,7 @@ const MovieCard = props => {
         >
           <Link to={`/movie/${id}`}>Show Details</Link>
           <StatusButtons movie={props.movie} />
+          <Rating totalStars={6} movie={props.movie} />
         </div>
       </div>
     </div>

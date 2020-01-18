@@ -5,3 +5,4 @@ export const GET_DETAILS = 'GET_DETAILS';
 export const ADD_MOVIE = 'ADD_MOVIE';
 export const DELETE_MOVIE = 'DELETE_MOVIE';
 export const TOGGLE_WATCHED = 'TOGGLE_WATCHED';
+export const RATE_MOVIE = 'RATE_MOVIE';
