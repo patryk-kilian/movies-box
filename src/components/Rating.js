@@ -6,9 +6,8 @@ import MoviesContext from '../context/movies/moviesContext';
 
 import { FaStar } from 'react-icons/fa';
 
-const Star = ({ selected, onClick, hoovered }) => (
+const Star = ({ selected, onClick }) => (
   <button
-    className={`siema`}
     onClick={onClick}
     css={{
       color: selected ? 'red' : 'grey',
@@ -21,7 +20,6 @@ const Star = ({ selected, onClick, hoovered }) => (
     }}
   >
     <FaStar css={{ height: '30px', width: '30px', transition: 'color .3s' }} />
-    {console.log(hoovered)}
   </button>
 );
 
