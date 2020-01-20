@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { useContext } from 'react';
 import MoviesContext from '../context/movies/moviesContext';
+import { FaPlus, FaMinus } from 'react-icons/fa';
 
 const StatusButtons = ({ movie }) => {
   const moviesContext = useContext(MoviesContext);
@@ -10,15 +11,33 @@ const StatusButtons = ({ movie }) => {
 
   const myMovie = myMovies.find(el => el.id === movie.id);
 
+  const IconButton = styled.button(props => ({
+    height: '40px',
+    width: '40px',
+    border: 'none',
+    marginLeft: '20px',
+    background: props.add ? '	hsl(120, 100%, 73%)' : 'hsl(0, 100%, 70%)',
+    color: props.add ? 'hsl(120, 100%, 20%)' : '	hsl(0, 100%, 17%)',
+    borderRadius: '50%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '1.4rem',
+    cursor: 'pointer',
+  }));
+
   const Button = styled.button(props => ({
     display: 'block',
     textDecoration: 'none',
     width: '100%',
     maxWidth: '150px',
+    marginLeft: '20px',
     padding: '8px 5px',
-    background: props.active ? 'green' : '#4d2d5d',
+    background: 'hsl(280,35%,60%)',
+    borderRadius: '5px',
+    boxShadow: '0 1px 3px hsla(0,0%,0%,.2)',
     border: 'none',
-    color: '#f3f2f3',
+    color: '#fff',
     textTransform: 'uppercase',
     fontSize: '.8em',
     fontWeight: '700',
@@ -26,20 +45,21 @@ const StatusButtons = ({ movie }) => {
     marginRight: '5px',
     cursor: 'pointer',
     transition: 'background .3s',
-    ':hover': props.active
-      ? {
-          background: 'blue',
-        }
-      : {
-          background: 'pink',
-        },
+    ':hover': { background: 'hsl(280,35%,40%)' },
   }));
 
-  if (!myMovie) return <Button onClick={() => addMovie(movie)}>add</Button>;
+  if (!myMovie)
+    return (
+      <IconButton add='true' onClick={() => addMovie(movie)}>
+        <FaPlus />
+      </IconButton>
+    );
   else
     return (
       <>
-        <Button onClick={() => deleteMovie(myMovie)}>delete</Button>
+        <IconButton onClick={() => deleteMovie(myMovie)}>
+          <FaMinus />
+        </IconButton>
         {myMovie.watched ? (
           <Button onClick={() => toggleWatched(myMovie)}>unwatch</Button>
         ) : (

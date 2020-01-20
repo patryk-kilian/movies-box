@@ -10,12 +10,12 @@ const Star = ({ selected, onClick }) => (
   <button
     onClick={onClick}
     css={{
-      color: selected ? 'red' : 'grey',
+      color: selected ? 'hsl(52, 85%, 51%)' : 'hsl(220, 3%, 50%)',
       border: 'none',
       background: 'transparent',
       cursor: 'pointer',
       ':hover ~ button': {
-        color: 'grey',
+        color: 'hsl(220, 3%, 50%)',
       },
     }}
   >
@@ -36,13 +36,14 @@ const Rating = ({ totalStars, movie }) => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        marginLeft: 'auto',
       }}
     >
       <div
         css={{
           display: 'flex',
           ':hover button': {
-            color: 'red',
+            color: 'hsl(52, 85%, 51%)',
           },
         }}
       >
@@ -54,7 +55,7 @@ const Rating = ({ totalStars, movie }) => {
           />
         ))}
       </div>
-      <p>
+      <p css={{ color: 'hsl(213,61%,17%)', fontSize: '0.8rem' }}>
         {myMovie.rating
           ? `${myMovie.rating} of ${totalStars} stars`
           : `no rating`}
