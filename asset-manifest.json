@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/movie-box/static/css/main.adb314cd.chunk.css",
+    "main.js": "/movie-box/static/js/main.fac7b8fd.chunk.js",
+    "main.js.map": "/movie-box/static/js/main.fac7b8fd.chunk.js.map",
+    "runtime-main.js": "/movie-box/static/js/runtime-main.729d1f89.js",
+    "runtime-main.js.map": "/movie-box/static/js/runtime-main.729d1f89.js.map",
+    "static/js/2.305f2e27.chunk.js": "/movie-box/static/js/2.305f2e27.chunk.js",
+    "static/js/2.305f2e27.chunk.js.map": "/movie-box/static/js/2.305f2e27.chunk.js.map",
+    "index.html": "/movie-box/index.html",
+    "precache-manifest.da169040eba0f710d5befd58918a599f.js": "/movie-box/precache-manifest.da169040eba0f710d5befd58918a599f.js",
+    "service-worker.js": "/movie-box/service-worker.js",
+    "static/css/main.adb314cd.chunk.css.map": "/movie-box/static/css/main.adb314cd.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.729d1f89.js",
+    "static/js/2.305f2e27.chunk.js",
+    "static/css/main.adb314cd.chunk.css",
+    "static/js/main.fac7b8fd.chunk.js"
+  ]
+}
