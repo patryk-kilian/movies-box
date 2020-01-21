@@ -12,6 +12,7 @@ const StatusButtons = ({ movie }) => {
   const myMovie = myMovies.find(el => el.id === movie.id);
 
   const IconButton = styled.button(props => ({
+    position: 'relative',
     height: '40px',
     width: '40px',
     border: 'none',
@@ -24,6 +25,16 @@ const StatusButtons = ({ movie }) => {
     alignItems: 'center',
     fontSize: '1.4rem',
     cursor: 'pointer',
+    transition: 'background .3s',
+    '& svg': {
+      transition: 'transform .3s',
+    },
+    '&:hover': {
+      background: props.add ? 'hsl(120, 100%, 60%)' : 'hsl(0, 100%, 60%)',
+      '.plus-icon': {
+        transform: 'rotate(90deg)',
+      },
+    },
   }));
 
   const Button = styled.button(props => ({
@@ -51,7 +62,7 @@ const StatusButtons = ({ movie }) => {
   if (!myMovie)
     return (
       <IconButton add='true' onClick={() => addMovie(movie)}>
-        <FaPlus />
+        <FaPlus className='plus-icon' />
       </IconButton>
     );
   else
