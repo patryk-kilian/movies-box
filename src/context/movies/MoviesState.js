@@ -23,7 +23,7 @@ const MoviesState = props => {
   const searchMovies = async query => {
     try {
       const res = await axios.get(
-        `http://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${query}&page=1`
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${query}&page=1`
       );
 
       dispatch({

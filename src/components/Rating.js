@@ -23,7 +23,7 @@ const Star = ({ selected, onClick }) => (
   </button>
 );
 
-const Rating = ({ totalStars, movie }) => {
+const Rating = ({ totalStars, movie, className }) => {
   const moviesContext = useContext(MoviesContext);
 
   const { myMovies, setRating } = moviesContext;
@@ -32,6 +32,7 @@ const Rating = ({ totalStars, movie }) => {
 
   return myMovie ? (
     <div
+      className={className}
       css={{
         display: 'flex',
         flexDirection: 'column',

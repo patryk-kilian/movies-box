@@ -33,7 +33,7 @@ const MovieCard = props => {
           alt=''
         />
       ) : (
-        <h2>no poster biatch</h2>
+        <h2>ni ma</h2>
       )}
       <div>
         <h2
