@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/movies-box/static/css/main.adb314cd.chunk.css",
-    "main.js": "/movies-box/static/js/main.aab5ac50.chunk.js",
-    "main.js.map": "/movies-box/static/js/main.aab5ac50.chunk.js.map",
+    "main.js": "/movies-box/static/js/main.0ab90f91.chunk.js",
+    "main.js.map": "/movies-box/static/js/main.0ab90f91.chunk.js.map",
     "runtime-main.js": "/movies-box/static/js/runtime-main.f2738154.js",
     "runtime-main.js.map": "/movies-box/static/js/runtime-main.f2738154.js.map",
     "static/js/2.305f2e27.chunk.js": "/movies-box/static/js/2.305f2e27.chunk.js",
     "static/js/2.305f2e27.chunk.js.map": "/movies-box/static/js/2.305f2e27.chunk.js.map",
     "index.html": "/movies-box/index.html",
-    "precache-manifest.505a455088c439a73fc1c40a9a1c4d99.js": "/movies-box/precache-manifest.505a455088c439a73fc1c40a9a1c4d99.js",
+    "precache-manifest.0aeaeb1efe27ad2d66b1d4bcdf8224af.js": "/movies-box/precache-manifest.0aeaeb1efe27ad2d66b1d4bcdf8224af.js",
     "service-worker.js": "/movies-box/service-worker.js",
     "static/css/main.adb314cd.chunk.css.map": "/movies-box/static/css/main.adb314cd.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.f2738154.js",
     "static/js/2.305f2e27.chunk.js",
     "static/css/main.adb314cd.chunk.css",
-    "static/js/main.aab5ac50.chunk.js"
+    "static/js/main.0ab90f91.chunk.js"
   ]
 }
