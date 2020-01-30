@@ -5,6 +5,7 @@ import MoviesReducer from './moviesReducer';
 import {
   SEARCH_MOVIES,
   GET_DETAILS,
+  CLEAR_MOVIE,
   ADD_MOVIE,
   DELETE_MOVIE,
   TOGGLE_WATCHED,
@@ -47,6 +48,13 @@ const MoviesState = props => {
     dispatch({
       type: GET_DETAILS,
       payload: res.data,
+    });
+  };
+
+  const clearMovie = () => {
+    dispatch({
+      type: CLEAR_MOVIE,
+      payload: null,
     });
   };
 
@@ -109,6 +117,7 @@ const MoviesState = props => {
         myMovies: state.myMovies,
         searchMovies,
         getMovieDetails,
+        clearMovie,
         toggleWatched,
         addMovie,
         deleteMovie,

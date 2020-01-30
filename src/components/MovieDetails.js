@@ -9,12 +9,12 @@ import Rating from './Rating';
 const MovieDetails = ({ id }) => {
   const moviesContext = useContext(MoviesContext);
 
-  const { getMovieDetails, movie } = moviesContext;
+  const { getMovieDetails, clearMovie, movie } = moviesContext;
 
   useEffect(() => {
-    setTimeout(() => {
-      getMovieDetails(id);
-    }, 1000);
+    getMovieDetails(id);
+
+    return () => clearMovie();
 
     //eslint-disable-next-line
   }, [id]);
@@ -25,47 +25,52 @@ const MovieDetails = ({ id }) => {
         <div
           css={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            padding: '30px 0',
+            gridTemplateColumns: '2fr 3fr',
+            padding: '30px 0 0 40px',
           }}
         >
           <div>
             <img
-              css={{
-                margin: '0 auto',
-              }}
               src={`http://image.tmdb.org/t/p/w342/${movie.poster_path}`}
               alt={movie.original_title}
             />
           </div>
-          <div>
-            <h1>{movie.original_title}</h1>
-            {/* <div
+          <div css={{ paddingLeft: '40px' }}>
+            <h1 css={{ color: 'hsl(280, 70%, 20%)' }}>
+              {movie.original_title}
+            </h1>
+            <ul
               css={{
-                display: 'flex',
-                alignItems: 'center',
-                height: '60px',
+                color: 'hsl(213, 61%, 17%)',
+                fontSize: '18px',
+                '& span': { fontWeight: '600' },
               }}
             >
-              <StatusButtons movie={movie} />
-              <Rating totalStars={6} movie={movie} />
-            </div> */}
+              <li>
+                Generes:{' '}
+                <span>{movie.genres.map(genre => genre.name).join(', ')}</span>
+              </li>
+              <li>
+                Release date: <span>{movie.release_date}</span>
+              </li>
+              <li>
+                Runtime: <span>{movie.runtime} min</span>
+              </li>
+              <li>
+                Budget: <span>{movie.budget}</span>
+              </li>
+            </ul>
+            <p css={{ marginTop: '10px', fontSize: '18px' }}>
+              {movie.overview}
+            </p>
           </div>
-          <p
-            css={{
-              gridColumn: 'span 2',
-              padding: '20px 60px',
-            }}
-          >
-            {movie.overview}
-          </p>
           <div
             css={{
               display: 'flex',
               alignItems: 'center',
               height: '60px',
-              paddingLeft: '40px',
               gridColumn: 'span 2',
+              marginTop: '30px',
             }}
           >
             <StatusButtons movie={movie} />

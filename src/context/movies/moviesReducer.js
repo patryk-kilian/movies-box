@@ -1,6 +1,7 @@
 import {
   SEARCH_MOVIES,
   GET_DETAILS,
+  CLEAR_MOVIE,
   TOGGLE_WATCHED,
   ADD_MOVIE,
   DELETE_MOVIE,
@@ -15,6 +16,11 @@ export default (state, action) => {
         fetchedMovies: action.payload,
       };
     case GET_DETAILS:
+      return {
+        ...state,
+        movie: action.payload,
+      };
+    case CLEAR_MOVIE:
       return {
         ...state,
         movie: action.payload,

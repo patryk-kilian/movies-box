@@ -61,6 +61,7 @@ const MovieCard = props => {
               color: '#4d2d5d',
               textTransform: 'uppercase',
               fontWeight: '600',
+              marginRight: '20px',
               '&::before': {
                 content: `''`,
                 position: 'absolute',
