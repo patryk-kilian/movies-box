@@ -84,7 +84,7 @@ const MovieDetails = ({ id }) => {
           </div>
         </div>
       ) : (
-        <h1>ni ma</h1>
+        <h1>Loading ...</h1>
       )}
     </Fragment>
   );

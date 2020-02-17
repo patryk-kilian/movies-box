@@ -16,8 +16,8 @@ const Movies = () => {
         width: '900px',
       }}
     >
-      <Router>
-        <Search path='/' />
+      <Router basename={process.env.PUBLIC_URL}>
+        <Search exact path='/' />
         <Watched path='/watched' />
         <Watchlist path='/watchlist' />
         <Details path='/movie/:id' />
