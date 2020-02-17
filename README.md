@@ -10,4 +10,4 @@ Built with react hooks and react context.
 - reach router - for routing
 - react context as state manager
 
-## Unfinished demo - https://patryk-kilian.github.io/movie-box/
+## Unfinished demo - https://patryk-kilian.github.io/movies-box/
